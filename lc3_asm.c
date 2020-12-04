@@ -1,3 +1,8 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "lc3_asm.h"
 /* 
 
 
@@ -29,9 +34,25 @@ skip everything in a line after ;
 
 
 
-
 int main(int argc, char* argv[]){
-	
+    char* path = "";
+    char* point = "";
 
-	return 0;
+    // get path to .asm file
+    if(argc != 2){
+        printf("lc3_asm [path_to_asm_file]\n");
+        exit(2);
+    }
+
+    path = argv[1];
+
+    // check if path ends with .asm
+    if((point = strrchr(path,'.')) != NULL ){
+        if(strcmp(point,".asm") != 0) {
+          printf(".asm file not provided!\n");
+          exit(2);
+      }
+    }
+
+    return 0;
 }
